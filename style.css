@@ -45,7 +45,7 @@ h1, h2, .navbar-brand {
     position: relative;
     
     /* ⚠️ 核心修改：第一个值 auto 代表宽度等比例缩放，第二个值 90% 代表高度永远占容器的 90% */
-    background-size: auto 110%;
+    background-size: auto 120%;
     
     /* 2. 调整位置：往右靠一点，可以用 right center，或者用百分比微调比如 90% 50% */
     background-position: right center;
@@ -278,4 +278,39 @@ h1, h2, .navbar-brand {
     height: 75px; /* 控制 Logo 的高度，你可以根据喜好改成 40px 或 50px */
     width: auto;  /* 宽度自动按比例缩放，防止图片变形 */
     object-fit: contain; 
+}
+
+/* ==========================================
+   导航栏重构：悬浮圆角与大字体
+========================================== */
+
+.custom-navbar {
+    background-color: var(--bg-beige);
+    padding: 18px 0; /* 稍微加深一点上下内边距，配合大字体 */
+    
+    /* 👇 1. 左下和右下角加上完美的圆角（数值可以根据喜好调，30px-40px 效果最好） */
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    
+    /* 2. 加一个非常微弱的下阴影，让悬浮圆角界限更立体清晰 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); 
+}
+
+/* 导航链接样式 */
+.custom-link {
+    color: var(--text-dark) !important;
+    
+    /* 👇 3. 字体调大（从原来的 1.1rem 调大到了 1.35rem） */
+    font-size: 1.35rem; 
+    
+    /* 4. 统一换成优雅的衬线体，让英文字体放大后更有质感 */
+    font-family: 'Playfair Display', serif; 
+    
+    position: relative;
+    padding-bottom: 2px;
+}
+
+/* 鼠标悬停/激活时的下划线特效 */
+.custom-link.active, .custom-link:hover {
+    border-bottom: 2px solid var(--text-dark);
 }
