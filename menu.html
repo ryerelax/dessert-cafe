@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Dessert.io</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--dark-brown);"> <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo1.png" alt="Dessert Shop Logo" class="custom-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-4 align-items-center">
+                    <li class="nav-item"><a class="nav-link custom-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link custom-link active" href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link custom-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link custom-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link custom-link" href="login.html">Sign In</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-dark rounded-pill position-relative px-3 py-1" style="font-family: 'Playfair Display', serif;" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            🛒 Cart <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=1200');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content position-relative text-start">
+            <h1 class="display-1 text-white fst-italic mb-3">Our Menu</h1>
+            <p class="lead text-white opacity-75 mb-4">Discover handcrafted<br>desserts made fresh daily.</p>
+            <h2 class="display-4 text-white fst-italic mt-4">Dessert.io</h2>
+            <p class="text-white opacity-75">Dessert is our life.</p>
+        </div>
+    </div>
+
+    <div class="main-content-wrapper">
+        <div class="container py-5">
+            
+            <div class="d-flex justify-content-center flex-wrap gap-3 mb-5 mt-3">
+                <button class="btn menu-category-btn active">Signature Cakes</button>
+                <button class="btn menu-category-btn">Tarts</button>
+                <button class="btn menu-category-btn">French Pastries</button>
+                <button class="btn menu-category-btn">Drinks</button>
+            </div>
+
+            <div class="row g-4 px-lg-4">
+                <div class="col-lg-6">
+                    <div class="menu-hz-card shadow-sm d-flex">
+                        <div class="menu-hz-img">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600" alt="Strawberry Shortcake">
+                        </div>
+                        <div class="menu-hz-body d-flex flex-column justify-content-center p-4 w-100">
+                            <h4 class="fst-italic mb-2">Strawberry Shortcake</h4>
+                            <p class="small text-muted mb-3">Light vanilla sponge with fresh cream and berries.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fs-4 text-dark fst-italic">RM 18</span>
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-3 add-to-cart-btn" data-id="m-01" data-name="Strawberry Shortcake" data-price="18.00">+ Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="menu-hz-card shadow-sm d-flex">
+                        <div class="menu-hz-img">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Chocolate Mousse Cake">
+                        </div>
+                        <div class="menu-hz-body d-flex flex-column justify-content-center p-4 w-100">
+                            <h4 class="fst-italic mb-2">Chocolate Mousse Cake</h4>
+                            <p class="small text-muted mb-3">Rich dark chocolate layers with silky mousse.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fs-4 text-dark fst-italic">RM 19</span>
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-3 add-to-cart-btn" data-id="m-02" data-name="Chocolate Mousse Cake" data-price="19.00">+ Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="menu-hz-card shadow-sm d-flex">
+                        <div class="menu-hz-img">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600" alt="Raspberry Mille Crepe">
+                        </div>
+                        <div class="menu-hz-body d-flex flex-column justify-content-center p-4 w-100">
+                            <h4 class="fst-italic mb-2">Raspberry Mille Crepe</h4>
+                            <p class="small text-muted mb-3">Thin crepes layered with raspberry cream.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fs-4 text-dark fst-italic">RM 20</span>
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-3 add-to-cart-btn" data-id="m-03" data-name="Raspberry Mille Crepe" data-price="20.00">+ Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="menu-hz-card shadow-sm d-flex">
+                        <div class="menu-hz-img">
+                            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600" alt="Burnt Cheesecake">
+                        </div>
+                        <div class="menu-hz-body d-flex flex-column justify-content-center p-4 w-100">
+                            <h4 class="fst-italic mb-2">Burnt Cheesecake</h4>
+                            <p class="small text-muted mb-3">Creamy cheesecake with a caramelized top.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fs-4 text-dark fst-italic">RM 17</span>
+                                <button class="btn btn-sm btn-outline-dark rounded-pill px-3 add-to-cart-btn" data-id="m-04" data-name="Burnt Cheesecake" data-price="17.00">+ Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center my-5 pt-4 px-lg-4">
+                <hr class="flex-grow-1 border-dark opacity-25">
+                <h2 class="px-4 display-5 fst-italic text-dark mb-0">Chef's Picks</h2>
+                <hr class="flex-grow-1 border-dark opacity-25">
+            </div>
+
+            <div class="row justify-content-center g-4 pb-5 px-lg-4">
+                <div class="col-md-4">
+                    <div class="chef-pick-card shadow-sm d-flex align-items-center position-relative p-2">
+                        <span class="chef-rank">1</span>
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300" alt="Pick 1" class="chef-pick-img rounded-4">
+                        <div class="ms-3 w-100 pe-2">
+                            <span class="badge bg-secondary rounded-pill mb-1" style="background-color: #a89481 !important;">Best Seller</span>
+                            <h6 class="fst-italic mb-1 fw-bold">Chocolate Mousse</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fst-italic text-muted small">RM 19</span>
+                                <button class="btn btn-sm text-dark p-0 border-0 add-to-cart-btn" data-id="m-02" data-name="Chocolate Mousse Cake" data-price="19.00"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="chef-pick-card shadow-sm d-flex align-items-center position-relative p-2">
+                        <span class="chef-rank">2</span>
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300" alt="Pick 2" class="chef-pick-img rounded-4">
+                        <div class="ms-3 w-100 pe-2">
+                            <span class="badge bg-secondary rounded-pill mb-1" style="background-color: #a89481 !important;">Best Seller</span>
+                            <h6 class="fst-italic mb-1 fw-bold">Strawberry Shortcake</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fst-italic text-muted small">RM 18</span>
+                                <button class="btn btn-sm text-dark p-0 border-0 add-to-cart-btn" data-id="m-01" data-name="Strawberry Shortcake" data-price="18.00"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="chef-pick-card shadow-sm d-flex align-items-center position-relative p-2">
+                        <span class="chef-rank">3</span>
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=300" alt="Pick 3" class="chef-pick-img rounded-4">
+                        <div class="ms-3 w-100 pe-2">
+                            <span class="badge bg-secondary rounded-pill mb-1" style="background-color: #a89481 !important;">Best Seller</span>
+                            <h6 class="fst-italic mb-1 fw-bold">Raspberry Crepe</h6>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fst-italic text-muted small">RM 20</span>
+                                <button class="btn btn-sm text-dark p-0 border-0 add-to-cart-btn" data-id="m-03" data-name="Raspberry Mille Crepe" data-price="20.00"><i class="fa-solid fa-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> <footer class="custom-footer text-center">
+        <div class="container">
+            <div class="social-icons mb-4">
+                <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+            </div>
+            <hr class="footer-divider mx-auto mb-4">
+            <div class="footer-text mb-5">
+                <p class="mb-1">Copyright @ 2025-2026</p>
+                <p class="mb-1">All rights reserved</p>
+                <p class="mb-0">All contents and images by Dessert.io</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 25px; background-color: var(--bg-beige); font-family: 'Playfair Display', serif;">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fs-3 fst-italic" id="modalTitle">Your Cart</h5>
+                    <button type="button" class="btn-close" data-bs-shadow="none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <div id="cart-view">
+                        <div id="cart-items-list" class="mb-4"></div>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center fw-bold fs-4 mb-2">
+                            <span>Total:</span>
+                            <span id="cart-total-price">RM 0.00</span>
+                        </div>
+                    </div>
+                    <div id="payment-view" class="text-center d-none my-3">
+                        <div id="pay-state-processing">
+                            <div class="spinner-border text-dark mb-3" role="status" style="width: 3rem; height: 3rem;"></div>
+                            <h4 class="fst-italic">Securing Connection...</h4>
+                            <p class="small text-muted">Simulating secure payment gateway routing.</p>
+                        </div>
+                        <div id="pay-state-success" class="d-none">
+                            <div class="text-success mb-3" style="font-size: 4rem;">✓</div>
+                            <h4 class="fst-italic text-success">Payment Successful!</h4>
+                            <p class="small text-muted">Order authorized. LocalStorage cache cleared safely.</p>
+                            <p class="fw-bold text-dark mt-2" id="receipt-id"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-outline-dark rounded-pill px-4" data-bs-dismiss="modal" id="modal-cancel-btn">Close</button>
+                    <button type="button" class="btn btn-dark rounded-pill px-4" id="checkout-main-btn" disabled>Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script> </body>
+</html>
