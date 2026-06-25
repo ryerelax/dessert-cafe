@@ -43,10 +43,20 @@ h1, h2, .navbar-brand {
 /* 巨幕区：图片铺满与渐变遮罩 */
 .hero-section {
     position: relative;
-    background-size: cover;
-    background-position: center;
+    
+    /* ⚠️ 核心修改：第一个值 auto 代表宽度等比例缩放，第二个值 90% 代表高度永远占容器的 90% */
+    background-size: auto 110%;
+    
+    /* 2. 调整位置：往右靠一点，可以用 right center，或者用百分比微调比如 90% 50% */
+    background-position: right center;
+    
+    /* 3. ⚠️ 重要：图片缩小后右边可能会空出来，这句防止图片重复平铺 */
+    background-repeat: no-repeat; 
+    
+    /* 4. ⚠️ 重要：给左边空出来的地方垫一个深色底，和你的渐变完美融合 */
+    background-color: var(--dark-brown); 
+
     min-height: 500px;
-    /* 重点：底部留出空间给米黄色纸板覆盖 */
     padding-bottom: 150px; 
 }
 
@@ -57,7 +67,7 @@ h1, h2, .navbar-brand {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, var(--dark-brown) 30%, transparent 100%);
+    background: linear-gradient(to right, var(--dark-brown) 10%, transparent 100%);
     z-index: 1;
 }
 
@@ -261,4 +271,11 @@ h1, h2, .navbar-brand {
 
 .special-card:hover .special-img-wrapper img {
     transform: scale(1.1); /* 鼠标悬停时图片也会轻微放大 */
+}
+
+/* 专属 Logo 大小控制 */
+.custom-logo {
+    height: 75px; /* 控制 Logo 的高度，你可以根据喜好改成 40px 或 50px */
+    width: auto;  /* 宽度自动按比例缩放，防止图片变形 */
+    object-fit: contain; 
 }
