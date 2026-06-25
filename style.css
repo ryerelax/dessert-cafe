@@ -299,3 +299,74 @@ h1, h2, .navbar-brand {
     object-fit: contain; 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   手机端专属适配 (屏幕宽度小于 768px 时生效)
+========================================== */
+@media (max-width: 768px) {
+    
+    /* 1. 拯救被挤压的巨幕区 */
+    .hero-section {
+        background-size: auto 85%;
+        /* 在手机上，把图片往左拉回来一点，确保能看到蛋糕的主体 */
+        background-position: 200% 80%; 
+        min-height: 400px; /* 手机上不需要那么高 */
+        padding-bottom: 80px;
+    }
+
+    /* 2. 调整渐变遮罩，给文字留足空间 */
+    .hero-overlay {
+        /* 让深色背景稍微往右多占一点，保证手机上文字不会看不清 */
+        background: linear-gradient(to right, var(--dark-brown) 55%, transparent 100%);
+    }
+
+    /* 3. 拯救被“吃掉”的文字区域 */
+    .hero-content {
+        padding-top: 130px; /* 手机上导航栏没那么厚，可以少推一点 */
+    }
+
+    /* 4. 让巨型标题在手机上稍微变小一点，防止换行太难看 */
+    .hero-content .display-1 {
+        font-size: 3.5rem !important; 
+    }
+    
+    /* 5. 修复导航栏：如果手机菜单展开时被遮挡，确保它的层级在最上面 */
+    .custom-navbar {
+        position: absolute;
+        z-index: 1050; 
+    }
+}
