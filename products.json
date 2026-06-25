@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "name": "经典草莓慕斯",
+        "description": "丝滑奶油与新鲜草莓的完美碰撞，甜而不腻。",
+        "price": 18.00,
+        "image": "https://picsum.photos/id/1080/500/250"
+    },
+    {
+        "id": "2",
+        "name": "黑巧熔岩蛋糕",
+        "description": "切开瞬间爆浆的浓郁黑巧克力，治愈一切不开心。",
+        "price": 22.00,
+        "image": "https://picsum.photos/id/835/500/250"
+    },
+    {
+        "id": "3",
+        "name": "手作马卡龙礼盒",
+        "description": "玫瑰、开心果、海盐焦糖等6种口味随机组合。",
+        "price": 45.00,
+        "image": "https://picsum.photos/id/431/500/250"
+    },
+    {
+        "id": "4",
+        "name": "宇治抹茶千层",
+        "description": "20层超薄饼皮搭配微苦回甘的顶级宇治抹茶奶油。",
+        "price": 25.00,
+        "image": "https://picsum.photos/id/113/500/250"
+    }
+]

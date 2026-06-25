@@ -1,0 +1,3 @@
+#productContainer {
+    min-height: 300px; /* 给商品区一个最小高度，防止加载时页面坍塌 */
+}

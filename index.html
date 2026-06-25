@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">🍰 Sweet Shop</a>
-            <button class="navbar-toggler" type="type" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -42,58 +42,18 @@
 
     <div class="container my-5" id="menu">
         <h2 class="text-center mb-4">今日限定主打</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-sm">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" class="card-img-top" alt="草莓慕斯" style="height: 250px; object-fit: cover;">
-        <div class="card-body d-flex flex-column">
-            <h5 class="card-title">经典草莓慕斯</h5>
-            <p class="card-text text-muted small">丝滑奶油与新鲜草莓的完美碰撞，甜而不腻。</p>
-            <h4 class="text-danger mt-auto mb-3">RM 18.00</h4>
-            
-            <button class="btn btn-dark w-100 add-to-cart-btn" 
-                    data-id="1" 
-                    data-name="经典草莓慕斯" 
-                    data-price="18">
-                加入购物车 🛒
-            </button>
-        </div>
-    </div>
-</div>
 
-<div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-sm">
-        <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=500" class="card-img-top" alt="巧克力熔岩" style="height: 250px; object-fit: cover;">
-        <div class="card-body d-flex flex-column">
-            <h5 class="card-title">黑巧熔岩蛋糕</h5>
-            <p class="card-text text-muted small">切开瞬间爆浆的浓郁黑巧克力，治愈一切不开心。</p>
-            <h4 class="text-danger mt-auto mb-3">RM 22.00</h4>
-            <button class="btn btn-dark w-100 add-to-cart-btn" 
-                    data-id="2" 
-                    data-name="黑巧熔岩蛋糕" 
-                    data-price="22">
-                加入购物车 🛒
-            </button>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="🔍 搜索您想吃的甜点（如：抹茶...）">
+            </div>
         </div>
-    </div>
-</div>
-
-<div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-sm">
-        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500" class="card-img-top" alt="法式马卡龙" style="height: 250px; object-fit: cover;">
-        <div class="card-body d-flex flex-column">
-            <h5 class="card-title">手作马卡龙礼盒</h5>
-            <p class="card-text text-muted small">玫瑰、开心果、海盐焦糖等6种口味随机组合。</p>
-            <h4 class="text-danger mt-auto mb-3">RM 45.00</h4>
-            <button class="btn btn-dark w-100 add-to-cart-btn" 
-                    data-id="3" 
-                    data-name="手作马卡龙礼盒" 
-                    data-price="45">
-                加入购物车 🛒
-            </button>
-        </div>
-    </div>
-</div>
+        
+        <div class="row" id="productContainer">
+            <div class="text-center text-muted">
+                <div class="spinner-border text-warning" role="status"></div>
+                <p>正在从服务器加载美味甜点...</p>
+            </div>
         </div>
     </div>
 

@@ -1,7 +1,4 @@
 // ==========================================
-// 1. 访客登录逻辑 (基于 SessionStorage)
-// ==========================================
-// ==========================================
 // 1. 登录与状态管理逻辑 (基于 SessionStorage)
 // ==========================================
 const userStatus = document.getElementById('userStatus');
@@ -226,3 +223,104 @@ if (closeModalBtn) {
         window.location.href = 'index.html'; // 页面重定向回首页
     });
 }
+
+// ==========================================
+// 5. 动态加载商品数据与搜索过滤 (Fetch API)
+// ==========================================
+const productContainer = document.getElementById('productContainer');
+const searchInput = document.getElementById('searchInput');
+let allProducts = []; // 存放所有原始数据
+
+// 异步获取并渲染产品
+async function loadProducts() {
+    if (!productContainer) return; 
+
+    try {
+        const response = await fetch('products.json');
+        allProducts = await response.json(); // 存入全局变量
+        renderProducts(allProducts); // 初始渲染全部
+    } catch (error) {
+        console.error('加载商品失败:', error);
+        productContainer.innerHTML = '<p class="text-center text-danger w-100 mt-4">抱歉，菜单加载失败，请检查网络。</p>';
+    }
+}
+
+// 渲染卡片的通用函数
+function renderProducts(productsToRender) {
+    productContainer.innerHTML = '';
+    
+    productsToRender.forEach(product => {
+        const cardHTML = `
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text text-muted small">${product.description}</p>
+                        <h4 class="text-danger mt-auto mb-3">RM ${product.price.toFixed(2)}</h4>
+                        <button class="btn btn-dark w-100 add-to-cart-btn" 
+                                data-id="${product.id}" 
+                                data-name="${product.name}" 
+                                data-price="${product.price}">
+                            加入购物车 🛒
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        productContainer.insertAdjacentHTML('beforeend', cardHTML);
+    });
+
+    // 每次渲染完新卡片，必须重新绑定一次点击事件
+    attachAddToCartEvents();
+}
+
+// 搜索框的实时过滤监听
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filtered = allProducts.filter(p => 
+            p.name.toLowerCase().includes(searchTerm) || 
+            p.description.toLowerCase().includes(searchTerm)
+        );
+        renderProducts(filtered);
+    });
+}
+
+// 绑定购物车点击事件
+function attachAddToCartEvents() {
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+    
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const product = {
+                id: e.target.getAttribute('data-id'),
+                name: e.target.getAttribute('data-name'),
+                price: parseFloat(e.target.getAttribute('data-price')),
+                quantity: 1
+            };
+
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem('dessertCart', JSON.stringify(cart));
+            updateCartCount();
+
+            // 视觉反馈
+            const originalText = e.target.textContent;
+            e.target.textContent = '✅ 已加入';
+            e.target.classList.replace('btn-dark', 'btn-success');
+            setTimeout(() => {
+                e.target.textContent = originalText;
+                e.target.classList.replace('btn-success', 'btn-dark');
+            }, 1000);
+        });
+    });
+}
+
+// 页面加载时执行
+loadProducts();
