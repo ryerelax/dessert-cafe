@@ -1,34 +1,64 @@
 // ==========================================
 // 1. 访客登录逻辑 (基于 SessionStorage)
 // ==========================================
-const loginBtn = document.getElementById('loginBtn');
+// ==========================================
+// 1. 登录与状态管理逻辑 (基于 SessionStorage)
+// ==========================================
 const userStatus = document.getElementById('userStatus');
+const loginBtn = document.getElementById('loginBtn'); // 针对首页的快速登录按钮
 
-// 检查页面加载时，是否已经存在登录状态
+// 页面加载时检查是否已登录
 if (sessionStorage.getItem('guestUser')) {
     const username = sessionStorage.getItem('guestUser');
-    userStatus.textContent = `欢迎, ${username}`;
-    loginBtn.textContent = '退出登录';
-    loginBtn.classList.replace('btn-outline-light', 'btn-danger');
-}
-
-// 监听登录/退出按钮的点击
-loginBtn.addEventListener('click', () => {
-    if (sessionStorage.getItem('guestUser')) {
-        // 如果已登录，则执行【退出登录】
-        sessionStorage.removeItem('guestUser');
-        userStatus.textContent = '游客未登录';
-        loginBtn.textContent = '访客登录';
-        loginBtn.classList.replace('btn-danger', 'btn-outline-light');
-    } else {
-        // 如果未登录，则生成一个随机访客ID执行【登录】
-        const randomGuestId = 'Guest_' + Math.floor(Math.random() * 10000);
-        sessionStorage.setItem('guestUser', randomGuestId);
-        userStatus.textContent = `欢迎, ${randomGuestId}`;
+    if (userStatus) userStatus.textContent = `欢迎, ${username}`;
+    
+    // 如果页面上有旧的快速登录按钮，把它变成退出登录
+    if (loginBtn) {
         loginBtn.textContent = '退出登录';
         loginBtn.classList.replace('btn-outline-light', 'btn-danger');
     }
-});
+}
+
+// 针对首页导航栏的“访客登录/退出”按钮点击事件
+if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        if (sessionStorage.getItem('guestUser')) {
+            sessionStorage.removeItem('guestUser'); // 退出登录
+            location.reload(); // 刷新页面
+        } else {
+            // 如果未登录，直接跳转到我们新做的 login.html 页面
+            window.location.href = 'login.html';
+        }
+    });
+}
+
+// === 针对 login.html 页面内的表单和社交按钮逻辑 ===
+const traditionalLoginForm = document.getElementById('traditionalLoginForm');
+const socialLoginBtns = document.querySelectorAll('.social-login-btn');
+
+// 函数：处理登录成功并跳转回首页
+function processLogin(username) {
+    sessionStorage.setItem('guestUser', username);
+    window.location.href = 'index.html'; // 登录成功后跳转回首页
+}
+
+// 监听传统表单提交
+if (traditionalLoginForm) {
+    traditionalLoginForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // 拦截页面刷新
+        processLogin('SweetMember'); // 模拟注册会员的昵称
+    });
+}
+
+// 监听 Google / Facebook 按钮点击
+if (socialLoginBtns.length > 0) {
+    socialLoginBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            let socialName = btn.textContent.includes('Google') ? 'Google User' : 'Facebook User';
+            processLogin(socialName);
+        });
+    });
+}
 
 // ==========================================
 // 2. 购物车逻辑 (基于 LocalStorage)
