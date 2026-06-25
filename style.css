@@ -20,22 +20,41 @@ h1, h2, .navbar-brand {
 }
 
 /* ==========================================
-   设计图还原：导航栏与巨幕特效
+   导航栏重构：悬浮圆角与大字体
 ========================================== */
 
-/* 导航栏背景色与底部细线 */
 .custom-navbar {
     background-color: var(--bg-beige);
-    padding: 15px 0;
+    padding: 18px 0;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    
+    /* 👇 核心修改：让导航栏脱离原本的位置，悬浮在最顶层 */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 确保它盖在巨幕图片上面 */
+    
+    /* 把阴影稍微调深一点点，加强立体感 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
 }
 
-/* 导航栏链接样式（带黑色下划线） */
+/* 导航链接样式 */
 .custom-link {
     color: var(--text-dark) !important;
-    font-size: 1.1rem;
+    
+    /* 👇 3. 字体调大（从原来的 1.1rem 调大到了 1.35rem） */
+    font-size: 1.35rem; 
+    
+    /* 4. 统一换成优雅的衬线体，让英文字体放大后更有质感 */
+    font-family: 'Playfair Display', serif; 
+    
     position: relative;
     padding-bottom: 2px;
 }
+
+/* 鼠标悬停/激活时的下划线特效 */
 .custom-link.active, .custom-link:hover {
     border-bottom: 2px solid var(--text-dark);
 }
@@ -45,10 +64,10 @@ h1, h2, .navbar-brand {
     position: relative;
     
     /* ⚠️ 核心修改：第一个值 auto 代表宽度等比例缩放，第二个值 90% 代表高度永远占容器的 90% */
-    background-size: auto 120%;
+    background-size: auto 110%;
     
     /* 2. 调整位置：往右靠一点，可以用 right center，或者用百分比微调比如 90% 50% */
-    background-position: right center;
+    background-position: right 20%;
     
     /* 3. ⚠️ 重要：图片缩小后右边可能会空出来，这句防止图片重复平铺 */
     background-repeat: no-repeat; 
@@ -74,7 +93,7 @@ h1, h2, .navbar-brand {
 /* 确保巨幕里的文字在遮罩层之上 */
 .hero-content {
     z-index: 2;
-    padding-top: 100px;
+    padding-top: 170px;
 }
 
 /* 核心特效：圆角米黄大纸板覆盖 */
@@ -280,37 +299,3 @@ h1, h2, .navbar-brand {
     object-fit: contain; 
 }
 
-/* ==========================================
-   导航栏重构：悬浮圆角与大字体
-========================================== */
-
-.custom-navbar {
-    background-color: var(--bg-beige);
-    padding: 18px 0; /* 稍微加深一点上下内边距，配合大字体 */
-    
-    /* 👇 1. 左下和右下角加上完美的圆角（数值可以根据喜好调，30px-40px 效果最好） */
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    
-    /* 2. 加一个非常微弱的下阴影，让悬浮圆角界限更立体清晰 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); 
-}
-
-/* 导航链接样式 */
-.custom-link {
-    color: var(--text-dark) !important;
-    
-    /* 👇 3. 字体调大（从原来的 1.1rem 调大到了 1.35rem） */
-    font-size: 1.35rem; 
-    
-    /* 4. 统一换成优雅的衬线体，让英文字体放大后更有质感 */
-    font-family: 'Playfair Display', serif; 
-    
-    position: relative;
-    padding-bottom: 2px;
-}
-
-/* 鼠标悬停/激活时的下划线特效 */
-.custom-link.active, .custom-link:hover {
-    border-bottom: 2px solid var(--text-dark);
-}
