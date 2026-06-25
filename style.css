@@ -1,3 +1,264 @@
 #productContainer {
     min-height: 300px; /* 给商品区一个最小高度，防止加载时页面坍塌 */
 }
+
+:root {
+    --bg-beige: #e5e3d4;     /* 导航栏和主体内容的米黄色 */
+    --dark-brown: #5d2822;   /* 底部和 Hero 区域的深红棕色 */
+    --card-brown: #9d846c;   /* Our Products 里的棕色方块 */
+    --card-pink: #d1beb4;    /* Today's Special 里的藕粉色方块 */
+    --text-dark: #1a1a1a;    /* 黑色文字 */
+}
+
+/* 顺便设置一下网页背景色 */
+body {
+    background-color: var(--bg-beige); 
+}
+
+h1, h2, .navbar-brand {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================
+   设计图还原：导航栏与巨幕特效
+========================================== */
+
+/* 导航栏背景色与底部细线 */
+.custom-navbar {
+    background-color: var(--bg-beige);
+    padding: 15px 0;
+}
+
+/* 导航栏链接样式（带黑色下划线） */
+.custom-link {
+    color: var(--text-dark) !important;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 2px;
+}
+.custom-link.active, .custom-link:hover {
+    border-bottom: 2px solid var(--text-dark);
+}
+
+/* 巨幕区：图片铺满与渐变遮罩 */
+.hero-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    /* 重点：底部留出空间给米黄色纸板覆盖 */
+    padding-bottom: 150px; 
+}
+
+/* 渐变遮罩层：左侧深红棕色，向右逐渐透明 */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--dark-brown) 30%, transparent 100%);
+    z-index: 1;
+}
+
+/* 确保巨幕里的文字在遮罩层之上 */
+.hero-content {
+    z-index: 2;
+    padding-top: 100px;
+}
+
+/* 核心特效：圆角米黄大纸板覆盖 */
+.main-content-wrapper {
+    background-color: var(--bg-beige);
+    border-top-left-radius: 80px;  /* 左上大圆角 */
+    border-top-right-radius: 80px; /* 右上大圆角 */
+    margin-top: -100px;            /* 负边距：向上移动，盖住巨幕 */
+    position: relative;
+    z-index: 10;                   /* 确保它在最上层 */
+    min-height: 500px;             /* 临时高度 */
+    padding-bottom: 80px;
+}
+
+/* ==========================================
+   设计图还原：主体内容区组件
+========================================== */
+
+/* Our Products 方块通用样式 */
+.design-box {
+    border-radius: 20px;
+    width: 100%;
+}
+
+/* 赋予深棕色 */
+.brown-box {
+    background-color: var(--card-brown);
+    height: 280px; /* 左右方块的默认高度 */
+}
+
+/* 中间的方块更高一点 */
+.box-tall {
+    height: 320px; 
+}
+
+/* 特色胶囊通用样式 */
+.feature-pill {
+    border-radius: 60px; /* 极大的圆角形成胶囊状 */
+    padding: 25px 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.4); /* 增加一点微光边缘质感 */
+}
+
+/* 胶囊的背景颜色微调 */
+.bg-light-beige {
+    /* 比网页背景稍微白一点点，制造出立体感 */
+    background-color: #f1efe1; 
+}
+.bg-pink-beige {
+    /* 使用我们第一步定义好的藕粉色 */
+    background-color: var(--card-pink); 
+}
+
+/* ==========================================
+   设计图还原：Today's Special & 页脚
+========================================== */
+
+/* Today's Special 高卡片 */
+.special-card {
+    background-color: var(--card-pink); /* 藕粉色 */
+    border-radius: 40px;                /* 大圆角 */
+    height: 420px;                      /* 设计图里卡片比较修长 */
+    padding: 20px;
+    text-align: left;                   /* 让标签靠左 */
+}
+
+/* 卡片左上角的 #1, #2 标签 */
+.special-tag {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3); /* 半透明白色背景 */
+    color: var(--text-dark);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* 底部 Footer 整体样式 */
+.custom-footer {
+    background-color: var(--dark-brown);
+    color: #fff;
+    padding: 60px 0 40px;
+    font-family: 'Playfair Display', serif; /* 统一使用优雅的衬线字体 */
+}
+
+/* 社交图标排版 */
+.social-icons a {
+    color: #fff;
+    font-size: 2.5rem;   /* 图标调大 */
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* 贯穿页脚的白色细线 */
+.footer-divider {
+    border-top: 2px solid #fff;
+    opacity: 1;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* 文字排版 */
+.footer-text p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.footer-links {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   图片填充与遮罩效果
+========================================== */
+
+/* 核心：让方块内部超出部分隐藏（保留圆角） */
+.product-image-box {
+    position: relative;
+    overflow: hidden; /* 这句最重要，能把方形图片切成圆角 */
+    border: none;
+}
+
+/* 让图片完美铺满整个方块 */
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片不变形 */
+    transition: transform 0.5s ease; /* 加个小动画准备 */
+}
+
+/* 鼠标放上去时，图片微微放大（高级感互动） */
+.product-image-box:hover img {
+    transform: scale(1.08);
+}
+
+/* 图片底部的文字浮层 */
+.product-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px 15px;
+    background: linear-gradient(to top, rgba(93, 40, 34, 0.9), transparent); /* 深棕色渐变保护文字 */
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* 修改原有的 special-card：加上 Flexbox 让底部按钮自动对齐 */
+.special-card {
+    background-color: var(--card-pink); 
+    border-radius: 40px;                
+    height: 440px; /* 稍微加高一点容纳文字 */                     
+    padding: 25px;
+    text-align: left;                   
+    display: flex;
+    flex-direction: column; /* 让内容垂直排列 */
+}
+
+/* 标题统一用优雅字体 */
+.special-card h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* 新增：卡片内部的图片相框 */
+.special-img-wrapper {
+    height: 160px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.special-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.special-card:hover .special-img-wrapper img {
+    transform: scale(1.1); /* 鼠标悬停时图片也会轻微放大 */
+}
